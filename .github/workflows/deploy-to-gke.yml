@@ -1,0 +1,31 @@
+name: Build and Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: rare-truck-410619
+
+    - name: Build and push Docker image
+      run: |
+        # Docker imajını build etme ve push etme komutları
+
+    - name: Set up kubectl
+      run: |
+        gcloud container clusters get-credentials my-gke-cluster --zone europe-west3 --project rare-truck-410619
+
+    - name: Deploy to GKE
+      run: |
+        kubectl apply -f deployment.yaml
