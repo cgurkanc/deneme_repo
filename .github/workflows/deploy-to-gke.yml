@@ -36,6 +36,8 @@ jobs:
       run: |
         gcloud container clusters get-credentials my-gke-cluster --zone europe-west3 --project rare-truck-410619
 
+    - name: Install gke-gcloud-auth-plugin
+      run: gcloud components install gke-gcloud-auth-plugin
 
     - name: Deploy to GKE
       run: |
