@@ -16,7 +16,8 @@ jobs:
       uses: google-github-actions/setup-gcloud@main
       with:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
-        project_id: rare-truck-410619
+        project_id: 107694014550368741689
+
 
     - name: Build and push Docker image
       run: |
@@ -24,7 +25,8 @@ jobs:
 
     - name: Set up kubectl
       run: |
-        gcloud container clusters get-credentials my-gke-cluster --zone europe-west3 --project rare-truck-410619
+        gcloud container clusters get-credentials my-gke-cluster --zone europe-west3 --project 107694014550368741689
+
 
     - name: Deploy to GKE
       run: |
